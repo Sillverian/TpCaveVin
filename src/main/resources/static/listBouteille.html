@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des bouteilles</title>
+    <!-- Jquery -->
+    <script
+            id="jquery"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Parametres de la page (bootstrap) -->
+    <script type="text/javascript" src="js/insertParam.js"></script>
+    <!-- Menu -->
+    <script type="text/javascript" src="js/affichmenu.js"></script>
+    <!-- Liste Bouteille -->
+    <script type="text/javascript" src="js/bouteille/listBouteille.js"></script>
+</head>
+<body>
+<!-- Barre navigation -->
+<div id="menu"></div>
+
+<!-- Gestion des erreurs -->
+<div class="alert alert-danger" id="errBouteille"></div>
+
+<h2>Liste des bouteilles</h2>
+
+<!-- Bouton de l'affichage du modal d'ajout -->
+<button type="button" class="btn btn-primary btn-sm w-100"
+        data-bs-toggle="modal" data-bs-target="#modAjoutBout" id="btnModal">
+    Ajout d'une bouteille
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><i class="bi bi-caret-down-fill" onclick="triNomDesc()"></i>Nom<i class="bi bi-caret-up-fill" onclick="triNomAsc()"></i></th>
+            <th><i class="bi bi-caret-down-fill" onclick="triMilleDesc()"></i>Millésime<i class="bi bi-caret-up-fill" onclick="triMilleAsc()"></i></th>
+            <th><i class="bi bi-caret-down-fill" onclick="triPetilDesc()"></i>Petillant<i class="bi bi-caret-down-fill" onclick="triPetilAsc()"></i></th>
+            <th><i class="bi bi-caret-down-fill" onclick="triQteDesc()"></i>Quantité<i class="bi bi-caret-down-fill" onclick="triQteAsc()"></i></th>
+            <th><i class="bi bi-caret-down-fill" onclick="triCoulDesc()"></i>Couleur<i class="bi bi-caret-down-fill" onclick="triCoulAsc()"></i></th>
+            <th><i class="bi bi-caret-down-fill" onclick="triRegDesc()"></i>Region<i class="bi bi-caret-down-fill" onclick="triRegAsc()"></i></th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="bodyBout">
+
+    </tbody>
+</table>
+
+<!-- PARTIE AJOUT DE REGION (MODAL) -->
+
+<!-- Modal d'ajout de bouteille -->
+<div class="modal fade" id="modAjoutBout" data-bs-backdrop="static"
+     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModal"></h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Gestion des erreurs -->
+                <div class="alert alert-danger" id="errBoutPost"></div>
+
+                <div class="m-3">
+                    <label class="form-label"> Nom de la bouteille : </label> <input
+                        class="form-control" type="text" name="nomBout" id="nomBout">
+                </div>
+
+                <div class="m-3">
+                    <label class="form-label"> Millesime de la bouteille : </label> <input
+                        class="form-control" type="text" name="milleBout" id="milleBout">
+                </div>
+
+                <div class="m-3">
+                    <div class="form-check form-switch form-check-inline">
+                        <label class="form-check-label"> Petillant ?</label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="petilBout">
+                    </div>
+                </div>
+
+                <div class="m-3">
+                    <label class="form-label"> Quantité de la bouteille : </label> <input
+                        class="form-control" type="number" name="qteBout" id="qteBout">
+                </div>
+
+                <div class="m-3 row">
+                    <div class="col">
+                        <label class="form-label"> Couleur du vin : </label> <select
+                            class="form-select" id="coulBout"></select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label"> Region de la bouteille : </label> <select
+                            class="form-select" id="regBout"></select>
+                    </div>
+
+                </div>
+
+                <div class="m-3">
+                    <input class="form-control" type="hidden" name="idBout" id="idBout">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-sm w-100" type="button"
+                        id="formAjtBout">Envoyer
+                </button>
+                <button class="btn btn-info btn-sm w-100" type="button"
+                        id="formModifBout">Enregistrer les modifications
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

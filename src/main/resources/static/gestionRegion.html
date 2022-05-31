@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des couleurs</title>
+    <!-- Jquery -->
+    <script
+            id="jquery"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Parametres de la page (bootstrap) -->
+    <script type="text/javascript" src="js/insertParam.js"></script>
+    <!-- Menu -->
+    <script type="text/javascript" src="js/affichmenu.js"></script>
+    <!-- Gestion couleur -->
+    <script type="text/javascript" src="js/region/gestionRegion.js"></script>
+</head>
+<body>
+<!-- Barre navigation -->
+<div id="menu"></div>
+
+<!-- Gestion des erreurs -->
+<div class="alert alert-danger" id="errRegion"></div>
+
+<h2>Gestion des regions</h2>
+<!-- Tableau des couleurs -->
+<table class="table">
+    <thead>
+    <tr>
+        <th><i class="bi bi-caret-down-fill" onclick="triIDDesc()"></i>Id<i class="bi bi-caret-up-fill" onclick="triIDAsc()"></i></th>
+        <th><i class="bi bi-caret-down-fill" onclick="triNomDesc()"></i>Libelle<i class="bi bi-caret-up-fill" onclick="triNomAsc()"></i></th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="bodyReg">
+
+    </tbody>
+</table>
+
+<!-- PARTIE AJOUT DE REGION (MODAL) -->
+
+<!-- Bouton de l'affichage du modal d'ajout -->
+<button type="button" class="btn btn-primary btn-sm w-100"
+        data-bs-toggle="modal" data-bs-target="#modAjoutReg" id="btnModal">
+    Ajout d'une région
+</button>
+
+<!-- Modal d'ajout de style -->
+<div class="modal fade" id="modAjoutReg" data-bs-backdrop="static"
+     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModal"></h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Gestion des erreurs -->
+                <div class="alert alert-danger" id="errRegPost"></div>
+
+                <div class="m-3">
+                    <label class="form-label"> Nom de la région : </label> <input
+                        class="form-control" type="text" name="nomReg" id="nomReg">
+                </div>
+                <div class="m-3">
+                    <input class="form-control" type="hidden" name="idReg" id="idReg">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-sm w-100" type="button"
+                        id="formAjtReg">Envoyer
+                </button>
+                <button class="btn btn-info btn-sm w-100" type="button"
+                        id="formModifReg">Enregistrer les modifications
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
